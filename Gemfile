@@ -39,6 +39,8 @@ gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem 'binding_of_caller'
+gem 'activeadmin'
+gem 'kaminari'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
