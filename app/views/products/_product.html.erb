@@ -1,0 +1,17 @@
+
+<div class="instrument-index-grid pt4">
+  <div class="instrument border-light">
+   <% if product.image.present? %>
+     <%= image_tag product.image, :size => "260x180"  %>
+   <% end %>
+  </div>
+  <div class="pa3">
+    <h3 class="fw7 f4 title"><%= link_to product.name, product%> </h3>
+    <p class="has-text-gray fg pt1">Category: <%= product.category.name%></p>
+    <p class="has-text-gray fg pt1">Sold By: <%= product.brand.name%></p>
+    <p class="f3 fw6 has-text-gray pt2 price">Price: <%= product.price%></p>
+    <p class="f3 fw6 has-text-right pt2 price">
+    </p>
+  </div>
+</div>
+

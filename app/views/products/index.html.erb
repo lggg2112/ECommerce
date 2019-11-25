@@ -1,0 +1,36 @@
+<% content_for :header do %>
+<div class="container">
+  <section class="productListSection">
+    <header class="productListHeader">
+      <h1 class="title">
+        Products
+      </h1>
+     <div class="filterDropdown">
+     </div>
+    </header>
+  </section>
+  <% end %>
+
+  <div class="instrument-index-grid pt4">
+    <% @products.each do |product| %>
+    <div class="instrument border-light">
+      <div class="instrument-thumb">
+        <%= image_tag product.image, :size => "260x180" %>
+        <div class="condition">
+          <span class="tag is-dark"><%= product.color%></span>
+        </div>
+      </div>
+    </div>
+    <div class="pa3">
+      <h3 class="fw7 f4 title"> <%= link_to product.name, product %> </h3>
+      <p class="has-text-gray fg pt1">Category: <%=link_to product.category.name, product.category %></p>
+      <p class="has-text-gray fg pt1">Sold By: <%=link_to product.brand.name, product.brand   %></p>
+      <p class="f3 fw6 has-text-gray pt2 price">Price: <%= product.price%></p>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
