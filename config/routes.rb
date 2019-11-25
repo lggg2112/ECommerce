@@ -3,14 +3,13 @@
 Rails.application.routes.draw do
   resources :line_items
   resources :carts
-  get 'products/index'
-  get 'products/show'
   get 'product/index'
   get 'product/show'
   get 'categories/index'
   get 'categories/show'
   get 'brands/index'
   get 'brands/show'
+  post 'line_items/line_items'
 
   devise_for :users, controllers: {
     registrations: 'registrations'
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :brands, only: %i[index alphabetized show]
-  resources :products, only: %i[index alphabetized show] do
+  resources :products, only: %i[index show] do
     collection do
       get 'search_results'
     end
