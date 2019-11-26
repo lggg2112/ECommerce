@@ -40,18 +40,19 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
-            <%# if cart_has_items %>
-              <%#= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
-             <!-- <span class="icon is-small">
-                <i class="fa fa-shopping-cart">
-              </span>
-              <span>Cart
-                <%#= cart_count_over_one %>
-              </span> -->
-              <%# end %>
-            <%# end %>
+
 
             <% if user_signed_in? %>
+             <% if total_cart_items %>
+              <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+              <span class="icon is-small">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+              <span>Cart
+                <%= cart_count_over_one %>
+                </span>
+              <% end %>
+            <% end %>
 
              <div class="navbar-item has-dropdown is-hoverable">
               <%= link_to 'Account', edit_user_registration_path, class: "navbar_link" %>

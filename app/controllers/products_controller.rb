@@ -20,4 +20,12 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :price, :image, :size, :color)
   end
+
+  def onsale
+    @products = Product.where("pricesale > ?", 0)
+  end
+
+  def new; end
+
+  def updated; end
 end
