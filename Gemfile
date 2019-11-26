@@ -41,6 +41,7 @@ gem "mini_magick"
 gem 'binding_of_caller'
 gem 'activeadmin'
 gem 'kaminari'
+gem 'stripe'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
