@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'appointment/index'
+  get 'appointment/show'
+  get 'employees/index'
+  get 'employees/show'
+  scope '/checkout' do
+    post 'create', to: 'checkout#create', as: 'checkout_create'
+    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+    get 'success', to: 'checkout#success', as: 'checkout_success'
+  end
+
+  get '/search' => 'store#search', :as => 'search_store'
+
   resources :line_items
   resources :carts
   get 'product/index'

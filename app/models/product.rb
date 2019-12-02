@@ -12,6 +12,11 @@ class Product < ApplicationRecord
 
   paginates_per 4
 
+  def self.search(search)
+    where('brand_id LIKE ?', "%#{search}")
+  end
+
+
   private
 
   def not_referenced_by_any_line_item

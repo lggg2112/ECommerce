@@ -2,6 +2,14 @@
 <div class="container">
   <section class="productListSection">
     <header class="productListHeader">
+        <%= form_tag products_path, :method => 'get' do %>
+        Brand: <%= collection_select :product, :brand_id, Brand.all, :id, :name, prompt: true %>
+        <%= submit_tag "search"%>
+        <% end %>
+        <%= form_tag products_path, :method => 'get' do %>
+        Category: <%= collection_select :product, :category_id, Category.all, :id, :name, prompt: true %>
+        <%= submit_tag "search"%>
+        <% end %>
       <h1 class="title">
         Products
       </h1>
@@ -21,15 +29,27 @@
         </div>
       </div>
     </div>
+    <% if user_signed_in? %>
     <div class="pa3">
       <h3 class="fw7 f4 title"> <%= link_to product.name, product %> </h3>
       <p class="has-text-gray fg pt1">Category: <%=link_to product.category.name, product.category %></p>
       <p class="has-text-gray fg pt1">Sold By: <%=link_to product.brand.name, product.brand   %></p>
-      <p class="f3 fw6 has-text-gray pt2 price">Price: <%= product.price%></p>
+      <p class="f3 fw6 has-text-gray pt2 price">Price: <%=number_to_currency product.price%></p>
+      <%= button_to 'Buy Now', checkout_create_path, method: :post, params: {id: product.id }, remote: true %>
     </div>
+    <% else %>
+     <div class="pa3">
+      <h3 class="fw7 f4 title"> <%= link_to product.name, product %> </h3>
+      <p class="has-text-gray fg pt1">Category: <%=link_to product.category.name, product.category %></p>
+      <p class="has-text-gray fg pt1">Sold By: <%=link_to product.brand.name, product.brand   %></p>
+      <p class="f3 fw6 has-text-gray pt2 price">Price: <%=number_to_currency product.price%></p>
+    </div>
+    <%end%>
     <% end %>
   </div>
 </div>
+
+
 
 
 

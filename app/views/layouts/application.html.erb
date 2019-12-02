@@ -35,6 +35,12 @@
           <span></span>
           <span></span>
         </div>
+        <%= form_tag(search_store_path, :method => "get",class: 'navbar-form navbar-left') do %>
+        <div class="input-group">
+        <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+        <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+        </div>
+      <% end %>
       </div>
       <div id="navbar" class="navbar-menu">
         <div class="navbar-end">

@@ -7,4 +7,9 @@ class Brand < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   has_one_attached :image
+
+  def self.search(search)
+    where('lower(products.name) LIKE :search OR lower(brands.name) LIKE :search', search: "%#{search.downcase}%").uniq
+  end
+
 end

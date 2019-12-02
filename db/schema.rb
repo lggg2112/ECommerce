@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_062722) do
+ActiveRecord::Schema.define(version: 2019_12_02_014432) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2019_11_26_062722) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "scheduled"
+    t.integer "brand_id", null: false
+    t.integer "employee_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_appointments_on_brand_id"
+    t.index ["employee_id"], name: "index_appointments_on_employee_id"
+  end
+
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -78,6 +88,22 @@ ActiveRecord::Schema.define(version: 2019_11_26_062722) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "customer_services", force: :cascade do |t|
+    t.string "serviceSubject"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "position"
+    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -121,6 +147,8 @@ ActiveRecord::Schema.define(version: 2019_11_26_062722) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "appointments", "brands"
+  add_foreign_key "appointments", "employees"
   add_foreign_key "carts", "users"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"

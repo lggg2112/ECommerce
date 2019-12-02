@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scheduled: 2019-12-01 19:44:32
+  brand: one
+  employee: one
+
+two:
+  scheduled: 2019-12-01 19:44:32
+  brand: two
+  employee: two
