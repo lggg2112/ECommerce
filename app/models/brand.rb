@@ -2,6 +2,8 @@
 
 class Brand < ApplicationRecord
   has_many :products
+  has_many :appointments
+  has_many :employees, through: :appointments
 
   validates :name, :address, :email, :contact_number, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }

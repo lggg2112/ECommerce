@@ -3,9 +3,9 @@
 class ProductsController < ApplicationController
   def index
     @products = if params[:product] && params[:product][:brand_id]
-                  Product.search(params[:product][:brand_id])
+                  Product.searchh(params[:product][:brand_id])
                 elsif params[:product] && params[:product][:category_id]
-                  Product.search(params[:product][:category_id])
+                  Product.searchh(params[:product][:category_id])
                 else
                   Product.all
                 end

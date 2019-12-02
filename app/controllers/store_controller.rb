@@ -7,7 +7,7 @@ class StoreController < ApplicationController
     if params[:search].blank?
       redirect_to(root_path, alert: 'Empty field!') && return
     else
-      @results = Category.joins(:products).search(params[:search])
+      @results = Product.joins(:category).search(params[:search])
     end
   end
 end

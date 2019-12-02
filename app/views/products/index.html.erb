@@ -4,11 +4,11 @@
     <header class="productListHeader">
         <%= form_tag products_path, :method => 'get' do %>
         Brand: <%= collection_select :product, :brand_id, Brand.all, :id, :name, prompt: true %>
-        <%= submit_tag "search"%>
+        <%= submit_tag "search!"%>
         <% end %>
         <%= form_tag products_path, :method => 'get' do %>
         Category: <%= collection_select :product, :category_id, Category.all, :id, :name, prompt: true %>
-        <%= submit_tag "search"%>
+        <%= submit_tag "search!"%>
         <% end %>
       <h1 class="title">
         Products
@@ -46,6 +46,7 @@
     </div>
     <%end%>
     <% end %>
+
   </div>
 </div>
 

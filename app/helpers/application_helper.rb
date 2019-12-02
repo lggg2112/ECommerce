@@ -9,4 +9,12 @@ module ApplicationHelper
     total = @cart.line_items.map(&:quantity).sum
     return total if total > 0
   end
+
+  def current_order
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
+  end
 end
