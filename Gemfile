@@ -36,7 +36,7 @@ end
 gem "bulma-rails", "~> 0.8.0"
 gem 'simple_form'
 gem 'devise'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem "mini_magick"
 gem 'binding_of_caller'
 gem 'activeadmin'
